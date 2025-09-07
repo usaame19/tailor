@@ -16,7 +16,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
     }
     
     return NextResponse.json(customer);
-  } catch (e) {
+  } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: 500 });
   }
 }
@@ -71,7 +71,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     });
 
     return NextResponse.json(result);
-  } catch (e) {
+  } catch (e: any) {
     console.error("Error updating customer:", e);
     return NextResponse.json({ 
       error: e.message,
@@ -94,7 +94,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
     });
 
     return NextResponse.json({ message: "Customer deleted successfully" });
-  } catch (e) {
+  } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: 500 });
   }
 }

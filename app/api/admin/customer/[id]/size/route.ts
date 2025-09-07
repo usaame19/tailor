@@ -23,7 +23,7 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
       }
     });
     return NextResponse.json(created);
-  } catch (e) {
+  } catch (e: any) {
     console.error("Error creating customer size:", e);
     return NextResponse.json({ 
       error: e.message,

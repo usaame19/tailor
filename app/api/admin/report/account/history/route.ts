@@ -69,7 +69,6 @@ export async function GET(request: NextRequest) {
             name: true
           }
         },
-        customer: true
       },
       orderBy: {
         createdAt: 'asc'
@@ -249,7 +248,7 @@ export async function GET(request: NextRequest) {
         details: {
           user: sell.user?.name,
           orderId: sell.orderId,
-          customer: sell.customer?.phone || 'Walk-in customer',
+          customer:  'Walk-in customer',
           paymentType: sell.type
         }
       });

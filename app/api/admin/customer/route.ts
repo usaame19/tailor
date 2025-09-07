@@ -11,7 +11,7 @@ export async function GET() {
       orderBy: { createdAt: 'desc' }
     });
     return NextResponse.json(customers);
-  } catch (e) {
+  } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: 500 });
   }
 }
@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
     });
     
     return NextResponse.json(created);
-  } catch (e) {
+  } catch (e: any) {
     console.error("Error creating customer:", e);
     return NextResponse.json({ 
       error: e.message,
