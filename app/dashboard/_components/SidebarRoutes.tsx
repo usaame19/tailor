@@ -14,6 +14,7 @@ import {
   ArrowRightLeft,
   Landmark,
   PackagePlus,
+  Scissors,
 } from "lucide-react";
 // import SidebarItem from "./item";
 import Link from "next/link";
@@ -60,6 +61,12 @@ const superAdminRoutes = [
         name: "Customer",
         path: "/dashboard/superAdmin/customer",
         icon: User,
+        new: true,
+      },
+      {
+        name: "Tailor Orders",
+        path: "/dashboard/superAdmin/tailorOrder",
+        icon: Scissors,
         new: true,
       },
     ],
@@ -179,6 +186,12 @@ const adminRoutes = [
         name: "Customer",
         path: "/dashboard/admin/customer",
         icon: User,
+        new: true,
+      },
+      {
+        name: "Tailor Orders",
+        path: "/dashboard/admin/tailorOrder",
+        icon: Scissors,
         new: true,
       },
     ],

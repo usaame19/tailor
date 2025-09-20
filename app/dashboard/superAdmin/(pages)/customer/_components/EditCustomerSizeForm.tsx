@@ -23,15 +23,15 @@ const initialSize = {
 };
 
 const measurementFields = [
-  { key: 'neck', label: 'Neck', unit: 'cm', icon: '👔', description: 'Around the base of the neck' },
-  { key: 'chest', label: 'Chest', unit: 'cm', icon: '👕', description: 'Around the fullest part of the chest' },
-  { key: 'waist', label: 'Waist', unit: 'cm', icon: '👖', description: 'Around the natural waistline' },
-  { key: 'hip', label: 'Hip', unit: 'cm', icon: '🩳', description: 'Around the fullest part of the hips' },
-  { key: 'shoulder', label: 'Shoulder', unit: 'cm', icon: '👔', description: 'Across the shoulders from point to point' },
-  { key: 'sleeve', label: 'Sleeve', unit: 'cm', icon: '👕', description: 'From shoulder to wrist' },
-  { key: 'inseam', label: 'Inseam', unit: 'cm', icon: '👖', description: 'Inside leg from crotch to ankle' },
-  { key: 'outseam', label: 'Outseam', unit: 'cm', icon: '👖', description: 'Outside leg from waist to ankle' },
-  { key: 'height', label: 'Height', unit: 'cm', icon: '📏', description: 'Total height' },
+  { key: 'neck', label: 'Neck', unit: 'inches', icon: '👔', description: 'Around the base of the neck' },
+  { key: 'chest', label: 'Chest', unit: 'inches', icon: '👕', description: 'Around the fullest part of the chest' },
+  { key: 'waist', label: 'Waist', unit: 'inches', icon: '👖', description: 'Around the natural waistline' },
+  { key: 'hip', label: 'Hip', unit: 'inches', icon: '🩳', description: 'Around the fullest part of the hips' },
+  { key: 'shoulder', label: 'Shoulder', unit: 'inches', icon: '👔', description: 'Across the shoulders from point to point' },
+  { key: 'sleeve', label: 'Sleeve', unit: 'inches', icon: '👕', description: 'From shoulder to wrist' },
+  { key: 'inseam', label: 'Inseam', unit: 'inches', icon: '👖', description: 'Inside leg from crotch to ankle' },
+  { key: 'outseam', label: 'Outseam', unit: 'inches', icon: '👖', description: 'Outside leg from waist to ankle' },
+  { key: 'height', label: 'Height', unit: 'inches', icon: '📏', description: 'Total height' },
   { key: 'weight', label: 'Weight', unit: 'kg', icon: '⚖️', description: 'Body weight' },
 ];
 

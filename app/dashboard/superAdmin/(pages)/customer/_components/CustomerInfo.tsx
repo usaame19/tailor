@@ -89,15 +89,15 @@ export default function CustomerInfo() {
   );
 
   const measurementFields = [
-    { key: 'neck', label: 'Neck', unit: 'cm', icon: '👔' },
-    { key: 'chest', label: 'Chest', unit: 'cm', icon: '👕' },
-    { key: 'waist', label: 'Waist', unit: 'cm', icon: '👖' },
-    { key: 'hip', label: 'Hip', unit: 'cm', icon: '🩳' },
-    { key: 'shoulder', label: 'Shoulder', unit: 'cm', icon: '👔' },
-    { key: 'sleeve', label: 'Sleeve', unit: 'cm', icon: '👕' },
-    { key: 'inseam', label: 'Inseam', unit: 'cm', icon: '👖' },
-    { key: 'outseam', label: 'Outseam', unit: 'cm', icon: '👖' },
-    { key: 'height', label: 'Height', unit: 'cm', icon: '📏' },
+    { key: 'neck', label: 'Neck', unit: 'inches', icon: '👔' },
+    { key: 'chest', label: 'Chest', unit: 'inches', icon: '👕' },
+    { key: 'waist', label: 'Waist', unit: 'inches', icon: '👖' },
+    { key: 'hip', label: 'Hip', unit: 'inches', icon: '🩳' },
+    { key: 'shoulder', label: 'Shoulder', unit: 'inches', icon: '👔' },
+    { key: 'sleeve', label: 'Sleeve', unit: 'inches', icon: '👕' },
+    { key: 'inseam', label: 'Inseam', unit: 'inches', icon: '👖' },
+    { key: 'outseam', label: 'Outseam', unit: 'inches', icon: '👖' },
+    { key: 'height', label: 'Height', unit: 'inches', icon: '📏' },
     { key: 'weight', label: 'Weight', unit: 'kg', icon: '⚖️' },
   ];
 

@@ -62,6 +62,7 @@ model User {
   transaction    Transaction[]
   bankAccount    BankAccount[] // Relation to BankAccount model
   accountSwaps   AccountSwap[]
+  tailorOrders   TailorOrder[] // Relation to TailorOrder model
 }
 
 
@@ -72,6 +73,7 @@ model Customer {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   customerSize CustomerSize[]
+  tailorOrders TailorOrder[] // Relation to TailorOrder model
 }
 
 model CustomerSize {
@@ -79,15 +81,15 @@ model CustomerSize {
   customerId  String   @db.ObjectId
   customer    Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
   // Tailor-specific customer size fields
-  neck        Float? // Neck circumference in cm
-  chest       Float? // Chest circumference in cm
-  waist       Float? // Waist circumference in cm
-  hip         Float? // Hip circumference in cm
-  shoulder    Float? // Shoulder width in cm
-  sleeve      Float? // Sleeve length in cm
-  inseam      Float? // Inseam length in cm
-  outseam     Float? // Outseam length in cm
-  height      Float? // Customer height in cm
+  neck        Float? // Neck circumference in inches
+  chest       Float? // Chest circumference in inches
+  waist       Float? // Waist circumference in inches
+  hip         Float? // Hip circumference in inches
+  shoulder    Float? // Shoulder width in inches
+  sleeve      Float? // Sleeve length in inches
+  inseam      Float? // Inseam length in inches
+  outseam     Float? // Outseam length in inches
+  height      Float? // Customer height in inches
   weight      Float? // Customer weight in kg
   active      Boolean @default(true)
   createdAt  DateTime @default(now())
@@ -206,6 +208,7 @@ model Accounts {
   fromAccountSwap AccountSwap[]     @relation("FromAccountSwap")
   toAccountSwap   AccountSwap[]     @relation("ToAccountSwap")
   bankTransaction BankTransaction[] // New relation to BankAccount model
+  tailorOrders    TailorOrder[] // Relation to TailorOrder model
 }
 
 model TransactionCategory {
@@ -334,4 +337,87 @@ model AccountSwap {
   details   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+// Tailor Order model for managing custom tailoring orders
+model TailorOrder {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  orderNumber String        @unique // Unique order identifier (e.g., TO-0001)
+  customerId  String        @db.ObjectId
+  customer    Customer      @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  userId      String        @db.ObjectId
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Order details
+  orderType   TailorOrderType // Type of garment (jacket, qamis, trouser, shirt)
+  status      TailorOrderStatus @default(pending)
+  
+  // Pricing
+  totalPrice  Float
+  paidAmount  Float         @default(0)
+  balance     Float         // Calculated field: totalPrice - paidAmount
+  
+  // Payment details
+  paymentType PaymentType?  @default(cash)
+  accountId   String?       @db.ObjectId
+  account     Accounts?     @relation(fields: [accountId], references: [id], onDelete: SetNull)
+  
+  // Order specifications
+  specifications TailorSpecification[]
+  
+  // Additional details
+  notes       String?
+  deliveryDate DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+// Tailor specifications for different garment types
+model TailorSpecification {
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  tailorOrderId String      @db.ObjectId
+  tailorOrder   TailorOrder @relation(fields: [tailorOrderId], references: [id], onDelete: Cascade)
+  
+  // Common measurements (in inches)
+  shoulder      Float? // Shoulder width
+  chest         Float? // Chest circumference
+  waist         Float? // Waist circumference
+  length        Float? // Length measurement
+  sleeves        Float? // Sleeve length
+  neck          Float? // Neck circumference
+  
+  // Trouser-specific measurements
+  hips          Float? // Hip circumference
+  thigh         Float? // Thigh circumference
+  bottom        Float? // Bottom width
+  
+  // Additional custom measurements
+  customMeasurements String? // JSON string for any additional measurements
+  
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+// Enum for tailor order types
+enum TailorOrderType {
+  jacket
+  qamis
+  trouser
+  shirt
+}
+
+// Enum for tailor order status
+enum TailorOrderStatus {
+  pending
+  in_progress
+  completed
+  delivered
+  cancelled
+}
+
+// Enum for payment types
+enum PaymentType {
+  cash
+  digital
+  both
 }
